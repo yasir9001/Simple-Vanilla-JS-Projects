@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Music Kit</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="keys">
+            
+            <div data-key="65" class="key">
+                <kbd>A</kbd>
+                <span class="sound">Clap</span>
+            </div>
+            
+            
+            <div data-key="83" class="key">
+                <kbd>S</kbd>
+                <span class="sound">hihat</span>
+            </div>
+            
+            
+            
+            
+            <div data-key="68" class="key">
+                <kbd>D</kbd>
+                <span class="sound">kick</span>
+            </div>
+            
+            
+            
+            <div data-key="70" class="key">
+                <kbd>F</kbd>
+                <span class="sound">openhat</span>
+            </div>
+            
+            
+            
+            <div data-key="71" class="key">
+                <kbd>G</kbd>
+                <span class="sound">boom</span>
+            </div>
+            
+            
+            
+            <div data-key="72" class="key">
+                <kbd>H</kbd>
+                <span class="sound">ride</span>
+            </div>
+            
+            
+            
+            <div data-key="74" class="key">
+                <kbd>J</kbd>
+                <span class="sound">snare</span>
+            </div>
+            
+            
+            
+            <div data-key="75" class="key">
+                <kbd>K</kbd>
+                <span class="sound">tom</span>
+            </div>
+            
+            
+            
+            <div data-key="76" class="key">
+                <kbd>L</kbd>
+                <span class="sound">tink</span>
+            </div>
+            
+            
+            
+        </div>
+        
+        
+        <audio data-key="65" class="key65" src="sound/clap.wav"></audio>
+        <audio data-key="83" class="key83" src="sound/hihat.wav"></audio>
+        <audio data-key="68" class="key68" src="sound/kick.wav"></audio>
+        <audio data-key="70" class="key70" src="sound/openhat.wav"></audio>
+        <audio data-key="71" class="key71" src="sound/boom.wav"></audio>
+        <audio data-key="72" class="key72" src="sound/ride.wav"></audio>
+        <audio data-key="74" class="key74" src="sound/snare.wav"></audio>
+        <audio data-key="75" class="key75" src="sound/tom.wav"></audio>
+        <audio data-key="76" class="key76" src="sound/tink.wav"></audio>
+        
+        
+        <script>
+            window.addEventListener('keydown', function(e){
+                
+               var code = "audio.key"+e.keyCode;
+               var keycode = ".key[data-key='"+e.keyCode+"']";
+               var audio = document.querySelector(code);
+               var key = document.querySelector(keycode);
+               if(!audio) return;
+               audio.currentTime=0;
+               audio.play();
+               key.classList.add("playing");
+               
+               });
+               
+               
+               
+             
+               
+               const buttons = document.querySelectorAll('.key');
+               console.log(buttons);
+               buttons.forEach(key => key.addEventListener('webkitTransitionEnd', removeTransition));
+               console.log(buttons);
+               
+               
+                 function removeTransition(e){
+                   if(e.propertyName!=='transform') {
+                       console.log(e);
+                     return;
+                    }
+                    console.log(e);
+                    this.classList.remove('playing');
+               }
+            </script>
+    </body>
+</html>

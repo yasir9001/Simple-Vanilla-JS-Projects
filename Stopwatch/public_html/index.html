@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Stopwatch</title>
+        <meta charset="UTF-8">
+        <style  type="text/css">
+            body{
+                font-family:  "cursive";
+                text-align: center;
+            }
+            #stopwatch{
+                font-size: 100px;
+                font-weight: 300;
+            }
+            button{
+                width:100px;
+                height:30px;
+            }
+            button:hover{
+                cursor: pointer;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h1 id="stopwatch">00 : 00 : 000</h1>
+            <button id="toggle">Start</button>
+            <button id="reset">Reset</button>
+        </div>
+        
+        <script>
+            
+            function Stopwatch(elem){
+                var time = 0;
+                var interval;
+                var offset;
+                
+                
+                function update(){
+                    if(this.isOn){
+                        time += delta();
+                    }
+                    var formattedTime = timeFormatter(time);
+                    
+                    elem.textContent = formattedTime;
+                }
+                
+                function delta(){
+                    var now = Date.now();
+                    var timePassed = now - offset;
+                    offset = now;
+                    return timePassed;
+                }
+                
+                function timeFormatter(timeInMilliseconds){
+                    
+                    var time = new Date(timeInMilliseconds);
+                    
+                    var minutes = time.getMinutes().toString();
+                    var seconds = time.getSeconds().toString();
+                    var milliseconds = time.getMilliseconds().toString();
+                    
+                    
+                    if(minutes.length<2){
+                        minutes = "0"+minutes;
+                    }
+                    
+                    if(seconds.length<2){
+                        seconds = "0"+seconds;
+                    }
+                    
+                    while(milliseconds.length<3){
+                        milliseconds = "0" + milliseconds;
+                    }
+                    
+                  return minutes + " : " + seconds + " : "+ milliseconds;
+                }
+                
+                this.isOn = false;
+                
+                this.start = function(){
+                    if(!this.isOn){
+                        interval = window.setInterval(update.bind(this), 120);
+                        offset = Date.now();
+                        this.isOn = true;
+                    }
+                };
+                
+                
+                
+                this.stop = function(){
+                    if(this.isOn){
+                        clearInterval(interval);
+                        interval = null;
+                        this.isOn=false;
+                    }
+                };
+                
+                
+                this.reset = function(){
+                   if(!this.isOn){
+                       time = 0;
+                       update();
+                       
+                   }
+                   
+                };
+                
+                
+            }
+            
+            
+            
+            
+          var timer = document.getElementById("stopwatch");
+          
+          var toggle = document.getElementById("toggle");
+          var reset =  document.getElementById("reset");
+          
+          var watch = new Stopwatch(timer);
+          
+          
+          toggle.addEventListener("click", function(){
+             if(watch.isOn){
+                 watch.stop();
+                 toggle.innerHTML="Start";
+             } 
+             else{
+                 watch.start();
+                 toggle.innerText="Stop";
+             }
+             
+          });
+          
+          
+          reset.addEventListener("click", function(){  
+            watch.reset();
+          });
+          
+          
+          
+          
+        </script>
+    </body>
+</html>

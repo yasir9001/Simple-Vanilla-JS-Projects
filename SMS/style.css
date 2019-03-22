@@ -1,0 +1,158 @@
+a.head{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #155079;
+    font-size: 2.5em
+}
+a:hover{
+    text-decoration: none;
+    color:green;
+    transition:.3s;
+    /* transition-delay:.2s; */
+}
+.abs a,.abs1 a{
+    font-size:1.2em
+}
+.img-log{
+    margin: 0 auto;
+    width: 540px;
+    margin-top: 20vh; 
+}
+.login{
+    padding: 5px 120px;
+}
+.btn{
+    padding:8px 43px;
+    border-radius:19px;
+    outline: none;
+
+}
+.btn-info:focus{
+    outline: none;
+
+}
+.btn-info:active{
+    outline: none;
+
+}
+.btn-info{
+    background-color: #155079;
+    margin: 20px 0;
+    border: 0;
+    transition: all 0.7s;
+    border:1px solid #155079;
+}
+.btn-info:hover{   
+    background-color:#fff;
+    color:#155079;
+}
+
+.g{
+    padding: 90px 0;
+}
+
+.h{
+    margin: 15px 0;
+}
+
+.form-control{
+    border-radius: 0;
+    border:0;
+    box-shadow: none;
+    border-bottom:1px solid #ccc;
+    transition: all .7s;
+}
+.input-group-addon{
+    background: 0; 
+    border-radius: 0; 
+    box-shadow: none;
+    border:0;
+    border-bottom:1px solid #ccc;
+} 
+.form-control:focus{
+    border:0;
+    box-shadow:none;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+div.abs{
+    position: absolute;
+    background:white;
+    transform:rotateY(180deg) translateZ(10em);
+    height:55vh;
+
+
+}
+div.abs1{
+    background:white;
+    position: absolute;
+    height:58vh;
+    transform:translateZ(0em);
+    z-index:1000;
+}
+ 
+
+
+div.mydiv{
+    position:relative;
+    transition:all 1.5s;
+    transition-timing-function: cubic-bezier(0, 0.13, 0.65, 1.02);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    top:10vh;
+    /* transform:rotateY(180deg); */
+
+    /* transform: rotateX(-40deg) rotateY(32deg); */
+} 
+
+ .styler{
+    transform: rotateY(180deg);
+    transition:all 1.5s;
+    transition-timing-function: cubic-bezier(0, 0.13, 0.65, 1.02);
+}
+/*
+.styler1{
+    transform: translateY(-1000%);
+    transition:all .7s;
+
+} */
+@media only screen and (max-width: 500px){
+    .login{
+        padding:5px 10px;
+    }
+    .g {
+        margin: 40px 0;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .col-md-6 img{
+        display:none;
+    }
+    /* div.container{
+        display:none;
+    } */
+}
+#welcome{
+    margin:0 auto;
+    border:2px solid goldenrod;
+    border-radius:8px;
+    width:fit-content;
+    padding:15px;
+    font-size:20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#welcome input{
+    margin:0px auto;
+    /* color:red; */
+}
